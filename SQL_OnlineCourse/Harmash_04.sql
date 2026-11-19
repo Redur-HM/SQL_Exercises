@@ -98,8 +98,7 @@ SELECT e1.id 'Employee Id', e1.name Employee, e2.name Manager
 FROM employees e1 
     LEFT JOIN employees e2  ON e1.manager_id = e2.id;
 
--- Mit "IFNULL"
+-- Mit "ISNULL"
 SELECT e1.id 'Employee Id', e1.name Employee, ISNULL(e2.name,'No Manager') AS Manager 
 FROM employees e1 
     LEFT JOIN employees e2  ON e1.manager_id = e2.id;
-
