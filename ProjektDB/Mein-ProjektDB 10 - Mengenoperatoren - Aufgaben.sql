@@ -251,3 +251,15 @@ UNION
 SELECT bezeichnung, ort, 'Abteilung' --AS kategorie ohne AS geht es auch
 FROM Abteilung
 ORDER BY firma;
+
+
+-- Nur um es zu wissen
+SELECT NULL AS Wert
+UNION
+SELECT NULL AS Wert;
+-- Gibt eine Zeile mit NULL zurück, da NULL als gleich behandelt wird und doppelte Werte entfernt werden.
+
+SELECT NULL AS Wert
+UNION ALL
+SELECT NULL AS Wert;
+-- Gibt zwie Zeile von NULL
