@@ -55,14 +55,14 @@ GO
 CREATE FUNCTION GetOrdersByCustomer
 (	@CustID INT
 )
-RETURNS @ErgebniS TABLE 
+RETURNS @Ergebnis TABLE 
 (	OrderID INT,
-	CustomerID INT,
+	CustomerID INT
 )
 AS
 	BEGIN
 		INSERT INTO @Ergebnis 
-		SELECT id AS [Order ID], Cus_id AS 'Customer ID'
+		SELECT id, Cus_id
 		FROM Orders
 		WHERE Cus_id = @CustID ;
 		RETURN;
@@ -74,7 +74,8 @@ SELECT * FROM GetOrdersByCustomer(8);
 --Tabellenwert-Funktionen
 -- Eine Tabellenwert-Funktion mit mehreren Anweisungen erstellt
 -- eine Tabellenvariable, fügt Daten ein und gibt diese Tabelle zurück.
-CREATE FUNCTION GetOrdersByCustomer
+GO
+CREATE OR ALTER FUNCTION GetOrdersByCustomer
 (	@CustID INT
 )
 RETURNS TABLE
@@ -82,8 +83,8 @@ AS
 RETURN(
 		SELECT id AS [Order ID], Cus_id AS 'Customer ID'
 		FROM Orders
-		WHERE Cus_id = @CustID ;
-)
+		WHERE Cus_id = @CustID
+);
 GO
 --Aufruf
 SELECT * FROM GetOrdersByCustomer(8);
@@ -91,6 +92,7 @@ SELECT * FROM GetOrdersByCustomer(8);
 -- Weitere mit SP und UDF und erste Form der Funktionen: "Skalarwert-Funktionen"
 -- Eine Skalarwert-Funktion gibt einen einzelnen Wert zurück,
 -- z. B. einen INT-, VARCHAR- oder DECIMAL-Wert.
+GO
 CREATE FUNCTION dbo.CalculatePrice
 (
     @Price DECIMAL(10,2)

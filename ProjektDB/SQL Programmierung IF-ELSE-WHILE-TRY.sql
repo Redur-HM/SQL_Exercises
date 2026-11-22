@@ -203,13 +203,13 @@ DECLARE @zahl22 TINYINT = 0;
 -- Ausführung mit TRY/CATCH
 BEGIN TRY
     PRINT 'Addition:';
-    SELECT @zahl11 + @zahl22;
+    SELECT  (@zahl11 + @zahl22) AS Summe;
     PRINT 'Subtraktion:';
-    SELECT @zahl11 - @zahl22;
+    SELECT (@zahl11 - @zahl22) AS Differenz;
     PRINT 'Division:';
-    SELECT @zahl11 / @zahl22;
+    SELECT (@zahl11 / @zahl22) AS Quotient;
     PRINT 'Multiplikation:';
-    SELECT @zahl11 * @zahl22;
+    SELECT (@zahl11 * @zahl22) AS Produkt;
 END TRY
 BEGIN CATCH
     PRINT 'Im CATCH-Block';
