@@ -89,12 +89,10 @@ SELECT * FROM Arbeit;
 -- ein Projekt eingestellt wurden.
 SELECT YEAR(einst_dat) AS jahr, COUNT(DISTINCT mit_id) AS anzahl
 FROM Arbeit
-GROUP BY YEAR(einst_dat) ;
+GROUP BY YEAR(einst_dat) 
 --im Fall Jahre sind nicht richtig sortiert.
 ORDER BY YEAR(einst_dat) ASC;
 --      Jahr  Anzahl
 --      2017  2
 --      2018  8
 --      2019  8
-
-

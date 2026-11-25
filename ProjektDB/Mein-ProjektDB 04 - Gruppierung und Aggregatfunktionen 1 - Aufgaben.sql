@@ -62,8 +62,3 @@ WHERE datum BETWEEN '20180101' AND '20181231';
 --		umsatz
 --		------
 --		500,00
-
-
-
-
-

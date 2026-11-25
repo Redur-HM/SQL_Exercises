@@ -3,11 +3,40 @@
 USE ProjektDB;
 BEGIN TRANSACTION;
 SET LANGUAGE german;
+
 ROLLBACK TRANSACTION;
 
 -- ==========
 -- Funktionen
 -- ==========
+-- Aufgabe 9.5
+--
+-- Generieren Sie Codes für Ihre Mitarbeiter. Der Code soll
+-- bestehen aus:
+--      - Erster Buchstabe Nachname
+--      - Vierter Buchstabe Nachname (groß)
+--      - Letzter Buchstabe Vorname (groß)
+--      - Abteilungskürzel rückwärts (EK => KE)
+--
+--      nachname  vorname   kuerzel  code
+--      Kaufmann  Brigitte  DI       KFEID
+--      Schäfer   Sabine    FR       SÄERF
+--      Meier     Rainer    DI       MERID
+--      Wolf      Klaus     EK       WFSKE
+--      Huber     Petra     FR       HEARF
+--      Richter   Ursula    EK       RHAKE
+SELECT
+    nachname,
+    vorname,
+    kuerzel,
+    CONCAT(
+        LEFT(nachname, 1),
+        UPPER(SUBSTRING(nachname, 4, 1)),
+        UPPER(RIGHT(vorname, 1)),
+        REVERSE(kuerzel) )AS code
+FROM Mitarbeiter
+    JOIN Abteilung ON abt_id = Abteilung.id;
+
 
 -- Aufgabe 9.6
 -- Geben Sie den Vor- und Nachnamen der Mitarbeiter
